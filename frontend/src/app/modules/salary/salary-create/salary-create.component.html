@@ -1,0 +1,68 @@
+<div class="flex-container">
+  <form [formGroup]="salaryForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>User</label>
+      <p-dropdown 
+        [options]="usersOptions"
+        formControlName="cpf"
+        [filter]="true"
+        filterBy="name"
+        [showClear]="true"
+        optionLabel="name"
+        placeholder="Select a user"
+        optionValue="cpf">
+      </p-dropdown>
+      <div *ngIf="submitted && formControls.cpf.errors" class="invalid-feedback">
+        <div *ngIf="formControls.cpf.errors?.required">CPF is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Salary</label>
+      <input
+        type="text"
+        formControlName="salary"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && formControls.salary.errors }"
+      />
+      <div *ngIf="submitted && formControls.salary.errors" class="invalid-feedback">
+        <div *ngIf="formControls.salary.errors?.required">salary is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Discount</label>
+      <input
+        type="text"
+        formControlName="discounts"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && formControls.discounts.errors }"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Date</label>
+    </div>
+    <div class="form-group">
+      <p-calendar 
+        formControlName="date" 
+        dateFormat="yy-mm-dd">
+      </p-calendar>
+      <div *ngIf="submitted && formControls.date.errors" class="invalid-feedback">
+        <div *ngIf="formControls.date.errors?.required">Date is required</div>
+      </div>
+    </div>
+
+    <div class="form-group submit-row">
+      <button type="submit" class="btn btn-primary">Save</button>
+      <button
+        type="button"
+        (click)="onReset()"
+        class="btn btn-warning float-right second-button">
+        Clear
+      </button>
+    </div>
+  </form>
+</div>
+
+<p-toast></p-toast>

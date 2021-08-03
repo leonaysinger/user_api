@@ -1,3 +1,11 @@
 /backend/venv/
 /backend/.idea/
 
+/frontend/dist/
+*.log
+/frontend/node_modules
+/frontend/.idea/
+/frontend/.settings/
+/frontend/.vscode/launch.json
+/frontend/.vscode/settings.json
+/frontend/.vscode/tasks.json

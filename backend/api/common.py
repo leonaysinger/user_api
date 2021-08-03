@@ -11,4 +11,6 @@ def save_and_create_location_header(request, serializer_class):
         id_source = str(serializer.data['id'])
         response['Location'] = request.build_absolute_uri() + id_source
         return response
+    print('$$$$$$$')
+    print(serializer.errors)
     return Response(serializer.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)

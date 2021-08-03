@@ -20,7 +20,7 @@ def create_user(total):
         cpf_instance = CPF()
         cpf = cpf_instance.generate()
         name = fake.name()
-        birthday = fake.date()
+        birthday = fake.date(pattern='%Y-%m-%d')
         user = User(cpf=cpf, name=name, birthday=birthday)
         user.save()
 

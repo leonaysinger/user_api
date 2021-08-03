@@ -1,0 +1,29 @@
+.second-button {
+  margin-left: 5px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+body {
+  margin: 0;
+}
+.flex-container {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+
+
+p-calendar {
+  display: block;
+}
+
+p-dropdown {
+  display: block;
+}
