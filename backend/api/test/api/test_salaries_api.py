@@ -6,9 +6,9 @@ from rest_framework import status
 from rest_framework.test import APITestCase
 
 
-class SalarysTestCase(APITestCase):
+class SalariesApiTestCase(APITestCase):
     def setUp(self):
-        self.list_url = reverse('salarys-list')
+        self.list_url = reverse('Salaries-list')
         self.user_1 = User.objects.create(cpf='02189306078',
                                           name='Leo',
                                           birthday='1990-10-18')
@@ -18,7 +18,7 @@ class SalarysTestCase(APITestCase):
                                           date='2021-05-05',
                                           discounts=create_valid_discounts())
 
-    def test_list_salarys_should_returned_200(self):
+    def test_list_salaries_should_returned_200(self):
         response = self.client.get(self.list_url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data.get('count'), 1)

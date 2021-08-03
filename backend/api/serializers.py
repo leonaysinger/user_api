@@ -12,12 +12,12 @@ class UserSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
         if not cpf_valid(data['cpf']):
-            raise serializers.ValidationError({'cpf': "Invalid CPF"})
+            raise serializers.ValidationError({"Invalid CPF"})
         if not name_valid(data['name']):
-            raise serializers.ValidationError({'name': "Name must contain only letters"})
-        if not date_valid(data['birthday']):
+            raise serializers.ValidationError({"Name must contain only letters"})
+        if not date_valid(data['birthday'], correct_date_format="%Y-%m-d"):
             raise serializers.ValidationError(
-                {'birthday': "Date must be a string with the following format: YYYY-mm-dd"}
+                {"Date must be a string with the following format: YYYY-mm-dd"}
             )
         return data
 
@@ -30,4 +30,8 @@ class SalarySerializer(serializers.ModelSerializer):
     def validate(self, data):
         if not discount_valid(data['discounts']):
             raise serializers.ValidationError({'discounts': "Discounts must be numbers separated by ;"})
+        if not date_valid(data['date'], correct_date_format="%Y-%m-d"):
+            raise serializers.ValidationError(
+                {"Date must be a string with the following format: YYYY-mm-dd"}
+            )
         return data

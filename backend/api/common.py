@@ -3,6 +3,7 @@ from rest_framework.response import Response
 
 
 def save_and_create_location_header(request, serializer_class):
+    """Create Location for a good pratice of REST API (level 3)"""
     serializer = serializer_class(data=request.data)
     if serializer.is_valid():
         serializer.save()

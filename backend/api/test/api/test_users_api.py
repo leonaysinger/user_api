@@ -35,7 +35,7 @@ class UsersTestCase(APITestCase):
         response = self.client.post(self.list_url, data=data)
         self.assertEquals(response.status_code, status.HTTP_422_UNPROCESSABLE_ENTITY)
 
-    def test_post_user_with_existed_cpf_should_return_422(self):
+    def test_post_user_with_duplicated_cpf_should_return_422(self):
         data = {
             'cpf': '05824744009',
             'name': 'Juarez',

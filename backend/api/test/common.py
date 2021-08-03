@@ -43,3 +43,4 @@ def invalid_data_with_wrong_discounts_numbers():
         'date': '2021-05-05',
         'discounts': '1250;2450.52.6'
     }
+
