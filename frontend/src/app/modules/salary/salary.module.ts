@@ -11,6 +11,8 @@ import { NgModule } from '@angular/core';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 import { SalaryTableComponent } from './salary-table/salary-table.component';
+import { CpfPipe } from 'src/app/pipes/cpf.pipe';
+import { CpfPipeModule } from 'src/app/pipes/cpf.pipe.module';
 
 
 @NgModule({
@@ -18,6 +20,7 @@ import { SalaryTableComponent } from './salary-table/salary-table.component';
     BrowserModule,
     BrowserAnimationsModule,
     CalendarModule,
+    CpfPipeModule,
     ConfirmDialogModule,
     DialogModule,
     DropdownModule,

@@ -11,7 +11,7 @@ import { MainMenuModule } from './share/main_menu/main_menu.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
