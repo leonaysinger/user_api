@@ -73,13 +73,11 @@ A aplicação de frontend foi escrita em Angular 12 e faz o acesso aos dados dis
 <br>
 <br>
 
-# Pŕoximas melhorias
+# Próximas melhorias
 A seguir uma lista de melhorias no projeto
 - Utilizar outro banco de dados
 - Criar uma tabela para descontos
-- Melhorar o uso do Django REST Framework
 - Melhorar os testes, principalmente em frontend
-- Criar máscaras e validações mais exclusivas para os campos no frontend (possivelmente uma diretiva para o CPF)
 - Criar internacionalização no frontend (relativo também ao formato das datas)
 - Melhorar a paginação entre front e back
 
