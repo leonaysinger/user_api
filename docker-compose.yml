@@ -1,0 +1,34 @@
+version: '3.3'
+
+services:
+  api:
+    container_name: user-api
+    build:
+      context: ./backend
+      dockerfile: Dockerfile-api
+    command: >
+      bash -c "sleep 12 &&
+      python manage.py makemigrations &&
+      python manage.py migrate &&
+      python populate_db.py && 
+      python manage.py runserver 0.0.0.0:8000"
+    restart: always
+    ports:
+      - "8000:8000"
+    networks:
+      - usernetwork
+  web:
+    container_name: user-frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile-web
+    restart: always
+    ports:
+      - '4200:4200'
+    networks:
+      - usernetwork
+
+
+networks:
+  usernetwork:
+    driver: bridge
