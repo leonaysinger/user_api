@@ -153,6 +153,7 @@
                 <input
                   type="text"
                   formControlName="cpf"
+                  [mask]="getCpfCnpjMask()"
                   class="form-control"
                   [ngClass]="{ 'is-invalid': submitted && formControls.cpf.errors }"
                 />

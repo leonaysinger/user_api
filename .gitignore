@@ -9,3 +9,6 @@
 /frontend/.vscode/launch.json
 /frontend/.vscode/settings.json
 /frontend/.vscode/tasks.json
+
+backend/api/migrations/
+backend/db.sqlite3

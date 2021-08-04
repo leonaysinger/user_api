@@ -7,6 +7,7 @@ import { TableModule } from 'primeng/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
+import { NgxMaskModule } from 'ngx-mask'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserTableComponent } from './user-table/user-table.component';
 import { ToolbarModule } from 'primeng/toolbar';
@@ -20,6 +21,7 @@ import { ToolbarModule } from 'primeng/toolbar';
     DialogModule,
     FormsModule,
     MenubarModule,
+    NgxMaskModule.forRoot(),
     TableModule,
     ToastModule,
     ReactiveFormsModule,

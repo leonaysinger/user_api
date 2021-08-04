@@ -157,7 +157,7 @@ export class UserTableComponent implements OnInit  {
             this.hideDialog();
             this.loadTable();
         }, error => {
-            this._messageService.add({severity:'error', summary:'Rejected', detail: error.error});
+            this._messageService.add({severity:'error', summary:'Rejected', detail: error.message});
         });
     }
 
@@ -244,5 +244,9 @@ export class UserTableComponent implements OnInit  {
         this.dialogTitle = '';
         this.dialogValue  = '';
     }
+
+    getCpfCnpjMask(): string{
+        return '000.000.000-00';
+     }
 }
     
