@@ -1,17 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UserCreateComponent } from './modules/user/user-create/user-create.component';
-import { UserListComponent } from './modules/user/user-list/user-list.component';
-import { SalaryCreateComponent } from './modules/salary/salary-create/salary-create.component';
-import { SalaryListComponent } from './modules/salary/salary-list/salary-list.component';
+import { UserTableComponent } from './modules/user/user-table/user-table.component';
+import { SalaryTableComponent } from './modules/salary/salary-table/salary-table.component';
 
 const routes: Routes = [
-  { path: 'user-create', component: UserCreateComponent },
-  { path: 'user-create/:id', component: UserCreateComponent },
-  { path: 'user-list', component: UserListComponent },
-  { path: 'salary-create', component: SalaryCreateComponent },
-  { path: 'salary-create/:id', component: SalaryCreateComponent },
-  { path: 'salary-list', component: SalaryListComponent }
+  { path: 'users', component: UserTableComponent },
+  { path: 'salaries', component: SalaryTableComponent },
 ];
 
 @NgModule({

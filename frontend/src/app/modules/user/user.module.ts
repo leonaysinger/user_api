@@ -4,12 +4,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MenubarModule } from 'primeng/menubar';
 import { TableModule } from 'primeng/table';
-import { UserCreateComponent } from './user-create/user-create.component';
-import { UserListComponent } from './user-list/user-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserTableComponent } from './user-table/user-table.component';
+import { ToolbarModule } from 'primeng/toolbar';
 
 @NgModule({
   imports: [
@@ -22,15 +22,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MenubarModule,
     TableModule,
     ToastModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastModule,
+    ToolbarModule
   ],
   declarations: [
-    UserCreateComponent,
-    UserListComponent
+    UserTableComponent
   ],
   exports: [
-    UserCreateComponent,
-    UserListComponent
+    UserTableComponent
   ]
 })
 export class UserModule { }

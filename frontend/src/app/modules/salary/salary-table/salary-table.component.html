@@ -1,0 +1,185 @@
+<p-toast></p-toast>
+
+<div class="card">
+    <p-toolbar styleClass="p-mb-4">
+        <ng-template pTemplate="left">
+            <button 
+            pButton 
+            pRipple 
+            label="New" 
+            icon="pi pi-plus" 
+            class="p-button-success p-mr-2" 
+            (click)="openNew()">
+        </button>
+            <button 
+                pButton 
+                pRipple 
+                icon="pi pi-trash" 
+                class="p-button-danger main-delete-button" 
+                (click)="deleteSelectedSalaries()" 
+                [disabled]="!selectedSalaries || !selectedSalaries.length">
+            </button>
+        </ng-template>
+    </p-toolbar>
+
+    <p-table #dt 
+        [value]="salaries" 
+        [rows]="10" 
+        [paginator]="true" 
+        [globalFilterFields]="['salary','cpf']"
+        [(selection)]="selectedSalaries" 
+        [rowHover]="true" 
+        dataKey="id"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" 
+        [showCurrentPageReport]="true">
+
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                <h5 class="p-m-0">Manage Salaries</h5>
+                <span class="p-input-icon-right">
+                    <i class="pi pi-search"></i>
+                    <input 
+                        pInputText 
+                        type="text" 
+                        (input)="dt.filterGlobal($event.target.value, 'contains')" 
+                        placeholder="Search..." />
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 3rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th pSortableColumn="name">CPF <p-sortIcon field="cpf"></p-sortIcon></th>
+                <th pSortableColumn="salary">Salary <p-sortIcon field="salary"></p-sortIcon></th>
+                <th>Discounts</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-salary>
+            <tr>
+                <td>
+                    <p-tableCheckbox [value]="salary"></p-tableCheckbox>
+                </td>
+                <td>{{salary.cpf}}</td>
+                <td>{{salary.salary}}</td>
+                <td>{{salary.discounts}}</td>
+                <td>{{salary.date}}</td>
+                <td>
+                  <button 
+                    pButton 
+                    pRipple 
+                    title="Edit"
+                    icon="pi pi-pencil" 
+                    class="p-button-rounded p-button-success p-mr-2 action-button" 
+                    (click)="editSalary(salary)">
+                </button>
+                  <button 
+                    pButton 
+                    pRipple 
+                    title="Remove"
+                    icon="pi pi-trash" 
+                    class="p-button-rounded p-button-warning action-button" 
+                    (click)="deleteSalaryDialog(salary)">
+                </button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                In total there are {{salaries ? salaries.length : 0 }} salaries.
+            </div>
+        </ng-template>
+    </p-table>
+</div>
+
+<p-dialog 
+    [(visible)]="salaryDialog" 
+    [style]="{width: '500px'}"
+    header="Salary Details" 
+    [responsive]="true"
+    [modal]="true"
+    (onHide)="hideDialog()">
+    
+    <ng-template pTemplate="content">
+        <form [formGroup]="salaryForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label>User</label>
+              <p-dropdown 
+                [options]="usersOptions"
+                appendTo="body"
+                formControlName="cpf"
+                [filter]="true"
+                filterBy="name"
+                [showClear]="true"
+                optionLabel="name"
+                placeholder="Select a user"
+                optionValue="cpf">
+              </p-dropdown>
+              <div *ngIf="submitted && formControls.cpf.errors" class="invalid-feedback">
+                <div *ngIf="formControls.cpf.errors?.required">CPF is required</div>
+              </div>
+            </div>
+        
+            <div class="form-group">
+              <label>Salary</label>
+              <input
+                type="text"
+                formControlName="salary"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && formControls.salary.errors }"
+              />
+              <div *ngIf="submitted && formControls.salary.errors" class="invalid-feedback">
+                <div *ngIf="formControls.salary.errors?.required">salary is required</div>
+              </div>
+            </div>
+        
+            <div class="form-group">
+              <label>Discount</label>
+              <input
+                type="text"
+                formControlName="discounts"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && formControls.discounts.errors }"
+              />
+            </div>
+        
+            <div class="form-group">
+              <label>Date</label>
+            </div>
+            <div class="form-group">
+              <p-calendar 
+                appendTo="body"
+                formControlName="date" 
+                dateFormat="yy-mm-dd">
+              </p-calendar>
+              <div *ngIf="submitted && formControls.date.errors" class="invalid-feedback">
+                <div *ngIf="formControls.date.errors?.required">Date is required</div>
+              </div>
+            </div>
+        </form>
+    </ng-template>
+    
+    <ng-template pTemplate="footer">
+        <button 
+            pButton
+            pRipple
+            label="Cancel"
+            icon="pi pi-times"
+            class="p-button-text"
+            (click)="hideDialog()">
+        </button>
+        <button 
+            pButton 
+            pRipple 
+            label="Save" 
+            icon="pi pi-check" 
+            class="p-button-text" 
+            (click)="onSubmit()">
+        </button>
+    </ng-template>
+</p-dialog>
+
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>

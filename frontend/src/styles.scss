@@ -27,3 +27,15 @@ p-calendar {
 p-dropdown {
   display: block;
 }
+
+p-dialog-content {
+  height: 700px;
+}
+
+.ui-calendar .ui-datepicker {
+  height : 200px;
+}
+
+.ui-datepicker td span, .ui-datepicker td a {
+  padding: 0px;
+}

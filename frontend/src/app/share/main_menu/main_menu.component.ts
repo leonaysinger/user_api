@@ -19,34 +19,12 @@ export class MainMenuComponent implements OnInit  {
             {
                 label:'User',
                 icon:'pi pi-users',
-                items:[
-                    {
-                        label:'New',
-                        icon:'pi pi-fw pi-plus',
-                        routerLink: ['/user-create']
-                    },
-                    {
-                        label:'List',
-                        icon:'pi pi-list',
-                        routerLink: ['/user-list']
-                    }
-                ]
+                routerLink: ['/users']
             },
             {
                 label:'Salary',
                 icon:'pi pi-money-bill',
-                items:[
-                  {
-                      label:'New',
-                      icon:'pi pi-fw pi-plus',
-                      routerLink: ['/salary-create']
-                  },
-                  {
-                      label:'List',
-                      icon:'pi pi-list',
-                      routerLink: ['/salary-list']
-                  }
-              ]
+                routerLink: ['/salaries']
             }
         ];
     }

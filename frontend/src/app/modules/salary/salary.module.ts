@@ -1,15 +1,17 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
 import { CalendarModule } from 'primeng/calendar';
-import { NgModule } from '@angular/core';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ToolbarModule } from 'primeng/toolbar';
+import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MenubarModule } from 'primeng/menubar';
+import { NgModule } from '@angular/core';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
-import { SalaryCreateComponent } from './salary-create/salary-create.component';
-import { SalaryListComponent } from './salary-list/salary-list.component';
+import { SalaryTableComponent } from './salary-table/salary-table.component';
+
 
 @NgModule({
   imports: [
@@ -17,20 +19,20 @@ import { SalaryListComponent } from './salary-list/salary-list.component';
     BrowserAnimationsModule,
     CalendarModule,
     ConfirmDialogModule,
+    DialogModule,
     DropdownModule,
     FormsModule,
     MenubarModule,
     ReactiveFormsModule,
     TableModule,
-    ToastModule
+    ToastModule,
+    ToolbarModule
   ],
   declarations: [
-    SalaryCreateComponent,
-    SalaryListComponent
+    SalaryTableComponent
   ],
   exports: [
-    SalaryCreateComponent,
-    SalaryListComponent
+    SalaryTableComponent
   ]
 })
 export class SalaryModule { }

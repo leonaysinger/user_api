@@ -11,18 +11,16 @@ import { DialogModule } from "primeng/dialog";
 import { MenubarModule } from "primeng/menubar";
 import { TableModule } from "primeng/table";
 import { ToastModule } from "primeng/toast";
-import { SalaryService } from "src/app/services/salary/salary.service";
+import { ToolbarModule } from "primeng/toolbar";
 import { UserService } from "src/app/services/user/user.service";
-import { SalaryCreateComponent } from "./salary-create.component";
+import { UserTableComponent } from "./user-table.component";
 
 
-describe('SalaryCreateComponent', () => {
+describe('UserCreateComponent', () => {
 
-  class MockSalaryService {};
+  class MockUserService {}
 
-  class MockUserService {};
-
-  let fixture: ComponentFixture<SalaryCreateComponent>;
+  let fixture: ComponentFixture<UserTableComponent>;
   
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -37,20 +35,20 @@ describe('SalaryCreateComponent', () => {
         TableModule,
         ToastModule,
         ReactiveFormsModule,
-        RouterTestingModule
+        ToastModule,
+        ToolbarModule
       ],
       declarations: [
-        SalaryCreateComponent
+        UserTableComponent
       ],
       providers: [
         DatePipe,
         MessageService,
-        { provide: SalaryService, useClass: MockSalaryService },
-        { provide: UserService, useClass: MockUserService }
+        { provide: UserService, useClass: MockUserService}
       ]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SalaryCreateComponent);
+    fixture = TestBed.createComponent(UserTableComponent);
   });
 
   it('Should create the component', () => {
