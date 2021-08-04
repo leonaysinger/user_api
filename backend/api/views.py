@@ -10,7 +10,6 @@ from django.db.models import Avg, Max, Min
 
 
 class UsersViewSet(viewsets.ModelViewSet):
-    """ Display all users """
     queryset = User.objects.all()
     serializer_class = UserSerializer
     filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
@@ -22,7 +21,6 @@ class UsersViewSet(viewsets.ModelViewSet):
 
 
 class SalariesViewSet(viewsets.ModelViewSet):
-    """ Display all salaries """
     queryset = Salary.objects.all()
     serializer_class = SalarySerializer
 
@@ -31,7 +29,6 @@ class SalariesViewSet(viewsets.ModelViewSet):
 
 
 def salary_mean_list(request, cpf):
-    """ Display salary mean by user"""
     if request.method == 'GET':
         data = Salary.objects.filter(cpf=cpf).aggregate(Avg('salary'))
         return JsonResponse(data)
@@ -40,7 +37,6 @@ def salary_mean_list(request, cpf):
 
 
 def highest_salary(request, cpf):
-    """ Display user highest salary"""
     if request.method == 'GET':
         data = Salary.objects.filter(cpf=cpf).aggregate(Max('salary'))
         return JsonResponse(data)
@@ -49,7 +45,6 @@ def highest_salary(request, cpf):
 
 
 def lowest_salary(request, cpf):
-    """ Display user lowest salary"""
     if request.method == 'GET':
         data = Salary.objects.filter(cpf=cpf).aggregate(Min('salary'))
         return JsonResponse(data)
@@ -58,7 +53,6 @@ def lowest_salary(request, cpf):
 
 
 def discount_mean_list(request, cpf):
-    """ Display discounts mean"""
     if request.method == 'GET':
         all_discounts = []
         salaries = Salary.objects.filter(cpf=cpf)

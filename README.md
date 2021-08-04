@@ -51,7 +51,7 @@ Crie um ambiente virtual python
 <br>
 `` python3 -m venv ./venv``
 <br>
-`` source /venv/bin/activate``
+`` source venv/bin/activate``
 <br>
 `` pip install -r requirements.txt``
 <br>
@@ -59,6 +59,10 @@ Crie um ambiente virtual python
 Os dois serviços estarão disponíveis nas mesmas portas descritas anteriormente.
 <br>
 <br>
+
+Para acessar a documentação (swagger) da api acesse
+<br>
+``http://127.0.0.1:8000/docs/``
 
 # Objetivos
 
